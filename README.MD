@@ -1,6 +1,6 @@
 # Machine Coding (Frontend React.js and Typescript) - Subscription/Plan Management Task
 
-To clear all the doubts please check the solution app - [Live app]("https://solution-machine-coding-subscriptions.pages.dev/)
+To clear all the doubts please check the solution app - [Live app](https://solution-machine-coding-subscriptions.pages.dev)
 
 ## Task Objective
 
