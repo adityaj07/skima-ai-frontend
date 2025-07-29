@@ -1,8 +1,11 @@
 # Machine Coding (Frontend React.js and Typescript) - Subscription/Plan Management Task
 
+To clear all the doubts please check the solution app - [Live app]("https://solution-machine-coding-subscriptions.pages.dev/)
+
 ## Task Objective
 
 The goal of this task is to implement a frontend application that interacts with the provided APIs to manage subscriptions.
+
 
 - You can skip the below instructions by starting the app development server after installing the packages using `npm run dev:app` where same instructions are shown with example.
 

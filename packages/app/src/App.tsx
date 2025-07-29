@@ -6,6 +6,18 @@ export default function App() {
         Integrations)
       </h1>
 
+      <p className="text-2xl my-2">
+        To clear all the doubts please check the solution -{" "}
+        <a
+          href="https://solution-machine-coding-subscriptions.pages.dev"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-4 text-blue-600"
+        >
+          Link
+        </a>
+      </p>
+
       <p className="text-2xl">
         <b>
           Important: Start the backend server using command 'npm run
