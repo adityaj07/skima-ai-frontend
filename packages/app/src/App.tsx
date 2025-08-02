@@ -2,7 +2,7 @@ import { MaxWidthWrapper } from "@/components/ui/maxWidthWrapper";
 
 import BackgroundWrapper from "./components/ui/backgroundWrapper";
 import { Toaster } from "./components/ui/sonner";
-import SubscriptionPage from "./page/subscriptionPage";
+import SubscriptionPage from "./page/SubscriptionPage";
 
 export default function App() {
   return (

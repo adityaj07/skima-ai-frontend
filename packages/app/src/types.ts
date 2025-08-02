@@ -39,3 +39,15 @@ export type DowngradeSubscriptionApiResponse =
       message: string;
     }
   | ApiFailureType;
+
+export type LoadingType = {
+  fetch: boolean;
+  upgrade: boolean;
+  downgrade: boolean;
+};
+
+export type ErrorType = {
+  fetch: string;
+  upgrade: string;
+  downgrade: string;
+};
