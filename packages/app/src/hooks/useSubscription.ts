@@ -87,7 +87,6 @@ export const useSubscriptions = () => {
 
       if (res.status === "success") {
         // we update the current plan immediately to show an immediate update to the user
-        const prevPlan = currentPlan;
         setCurrentPlan(res.subscription);
 
         toast.success("Plan upgraded successfully!");
@@ -96,7 +95,7 @@ export const useSubscriptions = () => {
         try {
           await refreshDataSilently();
         } catch (error) {
-          setCurrentPlan(prevPlan); // silent rollback if the sync fails
+          // we silently ignore the errors since we already updated the UI optimistically
         }
       } else {
         throw new Error(res.error);
@@ -130,16 +129,14 @@ export const useSubscriptions = () => {
 
       if (res.status === "success") {
         // we update the UI optimistically
-        const prevPlan = currentPlan;
         setCurrentPlan(res.subscription);
-
         toast.success("Plan downgraded successfully!");
 
         // then we try to refresh the data silently
         try {
           await refreshDataSilently();
         } catch (error) {
-          setCurrentPlan(prevPlan); // silent rollback if the sync fails
+          // we silently ignore the errors since we already updated the UI optimistically
         }
       } else {
         throw new Error(res.error);
