@@ -70,6 +70,8 @@ export const useSubscriptions = () => {
 
   // func to upgrade the sub
   const upgradeSub = async (code: string) => {
+    if (loading.upgrade) return; // early return
+
     // init the loading and error state
     setLoading((l) => ({
       ...l,
@@ -85,6 +87,7 @@ export const useSubscriptions = () => {
 
       if (res.status === "success") {
         // we update the current plan immediately to show an immediate update to the user
+        const prevPlan = currentPlan;
         setCurrentPlan(res.subscription);
 
         toast.success("Plan upgraded successfully!");
@@ -93,7 +96,7 @@ export const useSubscriptions = () => {
         try {
           await refreshDataSilently();
         } catch (error) {
-          // we silently ignore the errors since we already updated the UI optimistically
+          setCurrentPlan(prevPlan); // silent rollback if the sync fails
         }
       } else {
         throw new Error(res.error);
@@ -110,6 +113,8 @@ export const useSubscriptions = () => {
 
   // func to downgrade the sub
   const downgradeSub = async (code: string) => {
+    if (loading.downgrade) return; // early return
+
     // init the loading and error state
     setLoading((l) => ({
       ...l,
@@ -125,14 +130,16 @@ export const useSubscriptions = () => {
 
       if (res.status === "success") {
         // we update the UI optimistically
+        const prevPlan = currentPlan;
         setCurrentPlan(res.subscription);
+
         toast.success("Plan downgraded successfully!");
 
         // then we try to refresh the data silently
         try {
           await refreshDataSilently();
         } catch (error) {
-          // we silently ignore the errors since we already updated the UI optimistically
+          setCurrentPlan(prevPlan); // silent rollback if the sync fails
         }
       } else {
         throw new Error(res.error);
